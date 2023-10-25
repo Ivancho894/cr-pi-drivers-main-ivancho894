@@ -10,7 +10,7 @@ async function postDriver(req,res){
                 name,
                 lastname,
                 description,
-                image,
+                image:image?image:'default image',
                 nationality,
                 dayofbirth
             })

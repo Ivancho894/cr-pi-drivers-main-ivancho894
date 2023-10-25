@@ -6,13 +6,13 @@ module.exports = (sequelize) => {
   sequelize.define('Teams', {
     id:{
       type: DataTypes.INTEGER,
-      autoIncrement: true
+      autoIncrement: true,
+      primaryKey: true
       
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
     }
 
   });
