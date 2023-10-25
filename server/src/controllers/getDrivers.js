@@ -1,4 +1,4 @@
-const { Driver } = require('./db.js');
+const { Driver } = require('../db.js');
 
 async function getDriviers (req,res){
     try{
