@@ -23,15 +23,14 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     image:{
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING
     },
-    nacionality:{
+    nationality:{
       type: DataTypes.STRING,
       allowNull: false,
     },
     dayofbirth:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     }
 
