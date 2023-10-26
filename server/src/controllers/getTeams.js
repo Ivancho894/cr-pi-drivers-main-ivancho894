@@ -8,7 +8,6 @@ async function getTeams(req,res){
             //Carga por primera vez la base de datos
             for (let i = 0;i<drivers.length;i++){
                 const teams=drivers[i].teams?.split(/, |,/)
-                console.log(teams)
                 if(teams) for(let j =0;teams.length>j;j++){
                     !(await Teams.findOne({where:{name:teams[j]}}))?
                     (await Teams.create({name:teams[j]})):null;

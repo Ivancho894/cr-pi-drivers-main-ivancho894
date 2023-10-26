@@ -1,20 +1,27 @@
-const {Driver} = require('../db');
-
+const {Driver,Teams} = require('../db');
 
 async function postDriver(req,res){
     const {id,name,lastname,description,image,nationality,dayofbirth,teams} = req.body
-    if(id && name && lastname && description && image && nationality && dayofbirth && teams){
+    if(true){
         try{
             const driver = await Driver.create({
                 id,
                 name,
                 lastname,
                 description,
-                image:image?image:'default image',
+                image,
                 nationality,
                 dayofbirth
-            })
-            //await driver.addTeams(team)
+            }) 
+            const theTeams=teams.split(/, |,/)
+            console.log(theTeams)
+            for (let i = 0;i<theTeams.length;i++){
+                let thisTeam = (await Teams.findOne({where:{name:theTeams[i]}}))
+                console.log(thisTeam)
+                thisTeam = thisTeam?thisTeam:(await Teams.create({name:theTeams[i]}));
+
+                const p = await driver.addTeams(thisTeam)
+            }
             return res.status(200).json(driver)
 
 
