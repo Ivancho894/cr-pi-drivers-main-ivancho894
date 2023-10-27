@@ -17,7 +17,6 @@ async function postDriver(req,res){
             console.log(theTeams)
             for (let i = 0;i<theTeams.length;i++){
                 let thisTeam = (await Teams.findOne({where:{name:theTeams[i]}}))
-                console.log(thisTeam)
                 thisTeam = thisTeam?thisTeam:(await Teams.create({name:theTeams[i]}));
 
                 const p = await driver.addTeams(thisTeam)
