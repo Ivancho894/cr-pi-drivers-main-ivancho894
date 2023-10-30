@@ -1,7 +1,5 @@
 
-
 export default function Driver({aDriver}){
-console.log(aDriver,'fffffffffS')
     return (
         <div>
             <h4>{aDriver.name}</h4>
