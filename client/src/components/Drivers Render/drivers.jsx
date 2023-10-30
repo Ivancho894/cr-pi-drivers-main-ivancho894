@@ -5,12 +5,13 @@ import Driver from "./driver"
 export default function Drivers({drivers}){
     
     return(
-        <div>
+        <div className='cards'>
             {drivers.map(aDriver=>{
                 return (
-                    <div>
-                        <Driver aDriver={aDriver}/>
-                    </div>
+                    
+                        <div className='card'>
+                            <Driver aDriver={aDriver}/>
+                        </div>
                 ) }
             )}
             

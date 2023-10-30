@@ -1,8 +1,8 @@
-const { Driver } = require('../db.js');
+const { Driver, Teams } = require('../db.js');
 
 async function getDrivers (req,res){
     try{
-        const drivers = await Driver.findAll();
+        const drivers = await Driver.findAll({include:Teams});
         for(let i=0;i<drivers.length;i++){
             if(drivers[i].image==='') drivers[i].image='../../F1.svg'
         }
