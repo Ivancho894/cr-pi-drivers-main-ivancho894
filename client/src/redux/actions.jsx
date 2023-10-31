@@ -44,11 +44,15 @@ export function ORDER_DRIVERS({order,type}){
 
 export function SEARCH_DRIVERS(name){
     const endpoint = 'http://localhost:3001/drivers/name?name='
-    try{    
-        const newDrivers = axios(endpoint+name)
-        return {type:'SEARCH',payload:newDrivers}
-    }catch(error){
-            alert(error.message)
-        }
+    return async (dispatch)=>{
+        try{
+            const {data} = await axios(endpoint+name)
+            
+            const drivers = data.founded!=[]?data.founded:state.allDrivers
+            return dispatch({type:'SEARCH',payload:drivers})
+        }catch(error){
+                alert('No se encontraron personajes con ese nombre')
+                return
+        }}
 }
 

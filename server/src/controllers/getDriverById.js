@@ -1,7 +1,7 @@
 const { Driver,Teams} = require('../db.js');
 
 async function getDriverById (req,res){
-    const {id} = req.params;
+    const {id} = req.params; 
     try{
         const driver = await Driver.findByPk(id,{
             include: Teams

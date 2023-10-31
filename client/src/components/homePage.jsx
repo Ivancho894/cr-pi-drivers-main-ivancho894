@@ -4,7 +4,7 @@ import Filter from "./filter and sort/filter";
 import Sort from "./filter and sort/sort";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_DRIVERS, TEAM_FILTER } from "../redux/actions";
-import {SearchBar} from './SearchBar/searchBar'
+import SearchBar from './SearchBar/searchBar'
 
 export default function HomePage(){
     // const [drivers,setDrivers] = useState([])
@@ -13,6 +13,7 @@ export default function HomePage(){
     useEffect(()=>{
         dispatch(GET_DRIVERS())
     },[])
+    console.log(allDrivers)
 
     return (
         <div>
