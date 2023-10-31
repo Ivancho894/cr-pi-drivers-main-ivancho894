@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {drivers} from '../../../../server/api/db.json'
 
 export default function getDriversFromApi(){

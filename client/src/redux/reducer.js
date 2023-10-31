@@ -49,6 +49,11 @@ export default function reducer(state=initialState,action){
                 ...state,
                 allDrivers:ordered
             }
+        case 'SEARCH':
+            return{
+                ...state,
+                allDrivers: action.payload
+            }
         default:
             return {
                 ...state,

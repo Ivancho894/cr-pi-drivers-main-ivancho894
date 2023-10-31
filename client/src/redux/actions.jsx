@@ -40,3 +40,15 @@ export function TEAM_FILTER(team){
 export function ORDER_DRIVERS({order,type}){
     return {type:'ORDER',payload:{order,type}}
 }
+
+
+export function SEARCH_DRIVERS(name){
+    const endpoint = 'http://localhost:3001/drivers/name?name='
+    try{    
+        const newDrivers = axios(endpoint+name)
+        return {type:'SEARCH',payload:newDrivers}
+    }catch(error){
+            alert(error.message)
+        }
+}
+
