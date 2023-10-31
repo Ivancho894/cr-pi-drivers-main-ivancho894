@@ -1,28 +1,27 @@
-import getDrivers from "./Drivers Render/getDrivers"
+import { useSelector,useDispatch } from "react-redux"
+import { ORIGIN_FILTER, TEAM_FILTER } from "../../redux/actions";
 
-export default function Filter({drivers,filterDr}){
+export default function Filter(){
+    const allDrivers = useSelector(state=>state.allDrivers)
+    const dispatch = useDispatch();
+
     const theTeams=[]
-    drivers.map(x=>x.Teams?.map(team=>
+    allDrivers.map(x=>x.Teams?.map(team=>
                             theTeams.find(x=>x==team.name)?
-                            null:theTeams.push(team.name))
-        )
+                            null:theTeams.push(team.name)
+                            )
+                    )
+            
+
     const handleTeamFilter = (event) => {
-        const newDrivers = []
-        if(event.target.value!='-'){
-            drivers.map(x=>{
-                x.Teams.find(t=>t.name==event.target.value)?newDrivers.push(x):null;
-            })
-            filterDr(newDrivers)
-        }else{
-            getDrivers().then(x=>filterDr(x))
-        }
+        dispatch(TEAM_FILTER(event.target.value))
     }
     const handleOriginFilter = (event) => {
-        //por base de datos o api
+        dispatch(ORIGIN_FILTER(event.target.value))
     }    
+
     return (
         <div>
-            <h1>{theTeams}</h1>
             <select name="" id="" onChange={handleTeamFilter}>
                 <option value="-">All Teams</option>
                 {theTeams.map(team=>{

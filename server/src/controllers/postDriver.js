@@ -14,7 +14,6 @@ async function postDriver(req,res){
                 dayofbirth
             }) 
             const theTeams=teams.split(/, |,/)
-            console.log(theTeams)
             for (let i = 0;i<theTeams.length;i++){
                 let thisTeam = (await Teams.findOne({where:{name:theTeams[i]}}))
                 thisTeam = thisTeam?thisTeam:(await Teams.create({name:theTeams[i]}));

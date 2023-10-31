@@ -1,22 +1,25 @@
 import Drivers from "./Drivers Render/drivers";
 import { useState,useEffect } from 'react';
-import getDrivers from "./Drivers Render/getDrivers";
-import Filter from "./filter";
+import Filter from "./filter and sort/filter";
+import Sort from "./filter and sort/sort";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_DRIVERS, TEAM_FILTER } from "../redux/actions";
+
 
 export default function HomePage(){
-    const [drivers,setDrivers] = useState([])
+    // const [drivers,setDrivers] = useState([])
+    const allDrivers = useSelector(state=>state.allDrivers);
+    const dispatch = useDispatch();
     useEffect(()=>{
-        getDrivers().then(dr=>setDrivers(dr))
+        dispatch(GET_DRIVERS())
     },[])
-    const filterDr = (dr)=>{
-        setDrivers(dr)
-    }
 
     return (
         <div>
             <h1>ESTA ES LA HOME PAGE</h1>
-            <Filter drivers={drivers} filterDr={filterDr}/>
-            <Drivers drivers={drivers}/>
+            <Filter />
+            <Sort/>
+            <Drivers drivers={allDrivers}/>
         </div>
     )
 }

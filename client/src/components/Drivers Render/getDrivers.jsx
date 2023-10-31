@@ -1,12 +1,21 @@
 import axios from 'axios'
+import {drivers} from '../../../../server/api/db.json'
 
-
-export default async function getDrivers(){
-try{
-    const {data} = await axios(`http://localhost:3001/drivers`);
-    return data
-}catch(error){
-        alert(error.message)
-        return []
-    }
+export default function getDriversFromApi(){
+    const apiDrivers = drivers.map(driver=>{
+        return {
+            id:driver.id,
+            name:driver.name.forename,
+            lastname:driver.name.surname,
+            description:driver.description,
+            image:driver.image.url,
+            nationality:driver.nationality,
+            dayofbirth: driver.dob,
+            Teams:driver.teams?.split(/, |,/).map(x=>{
+                return {name:x}
+            })
+            
+        }
+    })
+    return apiDrivers
 }
