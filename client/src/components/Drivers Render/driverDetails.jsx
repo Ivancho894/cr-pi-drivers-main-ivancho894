@@ -2,18 +2,24 @@ import { useEffect, useState } from 'react';
 
 import { useParams } from "react-router-dom"
 
-
+import axios from 'axios';
 
 export default function DriverDetails(){
     const {id} = useParams();
+    console.log(id)
     const [driver,setDriver] = useState({})
-    useEffect(async ()=>{
+    useEffect(()=>{
         const endpoint = 'http://localhost:3001/drivers/'
-        try{
+        async function getdr(){try{
             const {data} = await axios(endpoint+id)
+            // console.log(data)
             setDriver(data)
-        }catch(error){}
+        }catch(error){
+            alert(error.message)
+        }}
+        getdr()
     },[])
+    console.log(driver)
     return(
         <div>
             <h2>{driver.name+' '+driver.lastname}</h2>
