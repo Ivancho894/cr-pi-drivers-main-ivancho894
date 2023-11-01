@@ -1,5 +1,5 @@
 import axios from "axios";
-import getDriversFromApi from "../components/Drivers Render/getDrivers";
+import {getDriversFromApi} from "../components/Drivers Render/getDrivers";
 
 
 export function GET_DRIVERS(){

@@ -1,6 +1,6 @@
 import {drivers} from '../../../../server/api/db.json'
 
-export default function getDriversFromApi(){
+export function getDriversFromApi(){
     const apiDrivers = drivers.map(driver=>{
         return {
             id:driver.id,

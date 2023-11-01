@@ -13,7 +13,6 @@ export default function HomePage(){
     useEffect(()=>{
         dispatch(GET_DRIVERS())
     },[])
-    console.log(allDrivers)
 
     return (
         <div>
