@@ -11,7 +11,7 @@ export default function reducer(state=initialState,action){
         case 'TEAM_FILTER':
             let newDrivers = []
             if(action.payload!='-'){
-                [...state.allDrivers].map(x=>{
+                [...state.apiDrivers,...state.dbDrivers].map(x=>{
                     x.Teams?.find(t=>t.name==action.payload)?newDrivers.push(x):null;
                 })
             }else{
