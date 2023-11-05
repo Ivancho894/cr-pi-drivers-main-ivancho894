@@ -8,7 +8,6 @@ async function getDriverById (req,res){
             include: Teams
         });
         if(!driver){
-            console.log(drivers)
             const inApi = drivers.filter(x=>x.id==id)
             if(inApi.length===1){
                 driver = {

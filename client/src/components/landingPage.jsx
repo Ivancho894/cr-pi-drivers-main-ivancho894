@@ -1,11 +1,30 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function LandingPage(){
-    const navigate = useNavigate();
+    const [imgHover,setimgHover] = useState(false)
+    const handleMouseOver = () => {
+        setimgHover(true);
+    };
+    const handleMouseOut = () => {
+        setimgHover(false);
+    };
     return (
-        <div>
-            <h1>BIENVENIDO MOTHERFUCKER</h1>
-            <button onClick={()=>navigate('/homepage')}>LETS GO HOME</button>
+        <div className="fixed-background-LandingPage">
+            <div>
+                <h1 id='title'>welcome to the F1 fan page</h1>
+                <div className="driversCont">
+                    <Link to='/homepage' >
+                        <img
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
+                            src={imgHover?"../Images/drbig.png":"../Images/drsmall.png"} 
+                            id="driversImg"
+                            />
+                    </Link>
+                </div>
+            </div>
         </div>
     )
 }

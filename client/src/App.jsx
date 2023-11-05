@@ -9,7 +9,7 @@ import AddDriver from './components/AddDriver/addDriver'
 
 function App() {  
   return (
-    <div>
+    <div className='content'>
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/newdriver' element={<AddDriver/>}/>

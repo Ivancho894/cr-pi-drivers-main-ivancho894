@@ -7,7 +7,6 @@ async function getDriversByName(req,res){
     try{
         let founded=[];
         const dbdrivers = await Driver.findAll({include:Teams})
-        console.log(dbdrivers[0]?.dataValues.name)
         let driversByName = dbdrivers?.filter(dr=>dr.dataValues.name.toUpperCase()==req.query.name.toUpperCase() )
         for(let i=0;i<15 && i<driversByName.length;i.includes++){
             founded.push(driversByName[i])

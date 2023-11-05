@@ -1,4 +1,24 @@
-#rooot {
+.fixed-background-LandingPage {
+  background-image: url("../Images/GettyImages-1233061641.jpg"); /* Establece la imagen de fondo solo para esta página */
+  background-size: cover;
+  background-attachment: fixed; /* Mantiene la imagen de fondo fija solo en esta página */
+  width: 100%;
+  height: 100%;
+}
+
+.content{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  
+}
+
+#rqoot {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -60,4 +80,24 @@
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
   gap: 20px;
+}
+
+
+#title{
+  position: absolute;
+  height: 20px;
+}
+.driversCont{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#driversImg{
+  background-color: transparent;
+  max-width: 600px;
+  display: table;
+  position: relative;
+  margin: auto;
+  
 }
