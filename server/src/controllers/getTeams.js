@@ -18,7 +18,6 @@ async function getTeams(req,res){
         const theTeams = await Teams.findAll()
         return res.status(200).json(theTeams)
     }catch(e){
-        console.log(e)
         return res.status(500).json(e.error)
         }
 

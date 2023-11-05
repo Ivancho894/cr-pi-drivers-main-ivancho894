@@ -13,12 +13,12 @@ export default function FormRender({driver, errors,handleChange}){
                             onChange={handleChange}
                             />
                         {'  '}
-                        <text style={{color:'red'}}>{errors.id}</text>
+                        <mark style={{color:'red'}}>{errors.id}</mark>
                         </h3>
                     
-                    {props.map(prop=>{
+                    {props.map((prop,i)=>{
                         return (
-                            <h3>{prop}:
+                            <h3 key={i}>{prop}:
                                 <input 
                                     type="text" 
                                     placeholder={prop}
@@ -26,7 +26,7 @@ export default function FormRender({driver, errors,handleChange}){
                                     name={prop}
                                     onChange={handleChange}/>
                                 {'  '}
-                                <text style={{color:'red'}}>{errors[prop]}</text>
+                                <mark style={{color:'red'}}>{errors[prop]}</mark>
                             </h3>
                                 )
                     })}

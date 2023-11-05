@@ -6,10 +6,10 @@ export default function Drivers({drivers}){
     
     return(
         <div className='cards'>
-            {drivers.map(aDriver=>{
+            {drivers.map((aDriver,i)=>{
                 return (
                     
-                        <div className='card'>
+                        <div className='card' key={i}>
                             <Driver aDriver={aDriver}/>
                         </div>
                 ) }

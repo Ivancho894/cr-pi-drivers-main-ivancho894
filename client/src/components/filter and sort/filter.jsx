@@ -3,7 +3,8 @@ import { ORIGIN_FILTER, TEAM_FILTER } from "../../redux/actions";
 import { useEffect } from "react";
 
 export default function Filter(){
-    const {apiDrivers,dbDrivers} = useSelector(state=>state)
+    const apiDrivers = useSelector(state=>state.apiDrivers)
+    const dbDrivers = useSelector(state=>state.dbDrivers)
     const dispatch = useDispatch();
     const allDrivers = [...apiDrivers,...dbDrivers]
     let theTeams=[]
@@ -23,8 +24,8 @@ export default function Filter(){
         <div>
             <select name="" id="" onChange={handleTeamFilter}>
                 <option value="-">All Teams</option>
-                {theTeams.map(team=>{
-                    return (<option value={team}>{team}</option>)
+                {theTeams.map((team,i)=>{
+                    return (<option value={team} key={i}>{team}</option>)
                 })}
             </select>
             <select name="" id="" onChange={handleOriginFilter}>
