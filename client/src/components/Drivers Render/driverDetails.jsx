@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import HomeBar from '../Home/homeBar';
 import { useParams } from "react-router-dom"
 
 import axios from 'axios';
@@ -20,7 +20,7 @@ export default function DriverDetails(){
         getdr()
     },[])
     return(
-        <div>
+        <div >
             <DriverDetRender driver={driver}/>
         </div>
     )

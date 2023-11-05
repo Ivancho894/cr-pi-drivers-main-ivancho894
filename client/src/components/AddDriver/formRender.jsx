@@ -2,7 +2,7 @@ export default function FormRender({driver, errors,handleChange}){
     const props = ['name','lastname','description','image','nationality','dayofbirth','Teams'];
 
     return(
-        <div>
+        <div className="input-section">
                 <form>
                     <h3>ID:
                         <input 

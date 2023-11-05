@@ -4,8 +4,9 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgb(0, 0, 0);
   background-color: #242424;
+  text-shadow: 1px 1px 2px rgb(179, 179, 179);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

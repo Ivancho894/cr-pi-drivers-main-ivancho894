@@ -77,7 +77,6 @@ body{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
   gap: 20px;
-  overflow: auto;
 }
 
 .card {
@@ -205,7 +204,7 @@ h3{
 }
 
 .pagination li {
-  margin: 0 5px; /* Adjust the margin as needed to control spacing between page numbers */
+  margin: 0 5px; 
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s, color 0.3s;
@@ -214,6 +213,136 @@ h3{
 }
 
 .pagination .active {
-  background-color: #007bff; /* Change the background color for the active page number */
-  color: #fff; /* Change the text color for the active page number */
+  background-color: #007bff;
+  color: #fff;
 }
+
+.driver-details {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.driver-details-img {
+  width: 100%;
+  max-height: 400px; /* Set a maximum height for the driver's photo */
+  object-fit: cover;
+}
+
+.driver-details-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.driver-details h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.driver-details p {
+  color: #007bff;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.driver-details-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #007bff; /* Link color */
+}
+
+.driver-details-link:hover {
+  text-decoration: underline;
+}
+.driver-details {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: url('../Images/ferrari steeringwheel.jpg');
+  background-size: cover;
+
+}
+
+.driver-details-img {
+  width: 100%;
+  max-height: 400px; 
+  object-fit: cover;
+}
+
+.driver-details-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.driver-details h1 {
+  font-size: 24px;
+  margin: 0;
+  
+}
+
+.driver-details p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.add{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  background-image: url('../Images/background.jpg');
+}
+.add-driver-page {
+  display: flex; 
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  justify-content: center;
+
+}
+
+.input-section {
+  flex: 1; 
+  padding: 20px;
+}
+
+.input-section h2 {
+  font-size: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  font-weight: bold;
+}
+
+.form input {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+

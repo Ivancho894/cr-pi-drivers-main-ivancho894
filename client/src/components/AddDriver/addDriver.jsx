@@ -3,6 +3,9 @@ import {submit, newvalidate} from "./validation"
 import { useNavigate } from "react-router-dom"
 import FormRender from "./formRender"
 import DriverDetRender from "../Drivers Render/driverDetailsRen"
+import { Link } from "react-router-dom"
+
+
 export default function AddDriver(){
     const navigate = useNavigate()
     const [driver,setDriver] = useState({
@@ -25,7 +28,6 @@ export default function AddDriver(){
         setDriver({
             ...driver,
             [event.target.name]:event.target.value,
-            // image:()=>{return errors.image==''&&driver.image!=''?driver.image:'https://silicondales.com/wp-content/uploads/2018/11/incognito-symbol-large-300x300.jpg';}
             
             })
     }
@@ -38,12 +40,19 @@ export default function AddDriver(){
     }
 
     return (
-        <div className="addDriver">
-            <div>
-                <FormRender driver = {driver} errors = {errors} handleChange={handleChange}/>
+        <div className="add">
+            <div className="homeBar">
+                <Link to='/'>
+                    <img src="../Images/F1 FAN PAGE.png" id="homebt" />
+                </Link>
             </div>
-            <div>
-                <DriverDetRender driver = {driver}/>
+            <div className="add-driver-page">
+                <div>
+                    <h2>New driver: </h2>
+                    <FormRender driver = {driver} errors = {errors} handleChange={handleChange}/>
+                    <button onClick={handleSubmit}>Submit</button>
+                </div>
+
             </div>
         </div>
     )
