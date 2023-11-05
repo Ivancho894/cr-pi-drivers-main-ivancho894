@@ -11,8 +11,8 @@ export default function LandingPage(){
         setimgHover(false);
     };
     return (
-        <div className="fixed-background-LandingPage">
-            <div>
+        <div className='content'>
+            <div className="fixed-background-LandingPage">
                 <h1 id='title'>welcome to the F1 fan page</h1>
                 <div className="driversCont">
                     <Link to='/homepage' >

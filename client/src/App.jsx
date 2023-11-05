@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import {Route,Routes,useNavigate} from "react-router-dom"
 import LandingPage from './components/landingPage'
-import HomePage from './components/homePage'
+import HomePage from './components/Home/homePage'
 import DriverDetails from './components/Drivers Render/driverDetails'
 import AddDriver from './components/AddDriver/addDriver'
 
 
 function App() {  
   return (
-    <div className='content'>
+    <div >
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/newdriver' element={<AddDriver/>}/>
