@@ -9,14 +9,13 @@ import { Link } from "react-router-dom"
 export default function AddDriver(){
     const navigate = useNavigate()
     const [driver,setDriver] = useState({
-        id:'',
         name : '',
         lastname : '',
         description : '',
         image: '',
         nationality: '',
         dayofbirth: '',
-        Teams:[]
+        teams:[]
 
     })
     const [errors, setErrors] = useState({})
@@ -32,11 +31,11 @@ export default function AddDriver(){
             })
     }
     const handleSubmit = () =>{
-        if (errors=={}){
-            const res = submit(driver)
-            alert(res)
-            if(res==="A new driver was created") navigate('http://localhost:3001/drivers/'+driver.id)
-        }
+        const res = submit(errors,driver)
+        res.then(data=>{
+            //Falta saber el id que le designo la DB
+            // if(data==="A new driver was created") navigate('http://localhost:3001/drivers/'+driver.id)
+        })
     }
 
     return (

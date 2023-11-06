@@ -1,11 +1,11 @@
 const {Driver,Teams} = require('../db');
 
 async function postDriver(req,res){
-    const {id,name,lastname,description,image,nationality,dayofbirth,teams} = req.body
-    if(true){
+    const {name,lastname,description,image,nationality,dayofbirth,teams} = req.body
+    if(name!='',lastname!='',description!='',image!='',nationality!='',dayofbirth!='',teams!=''){
+
         try{
             const driver = await Driver.create({
-                id,
                 name,
                 lastname,
                 description,

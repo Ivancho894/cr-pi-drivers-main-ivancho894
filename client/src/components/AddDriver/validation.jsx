@@ -1,12 +1,23 @@
 import axios from "axios"
 
-const regexLetters = /^[A-Za-z]+$/
+const regexLetters = /^[A-Za-z ]+$/
 
 const regexId = /^[0-9]+$/
 
 const regexBirthDayCheck = /^\d{4}-\d{2}-\d{2}$/
 
-const regexURL = /^www\.[A-Za-z0-9-]+\.com$/ && /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
+const regexURL = /^(https?|ftp):\/\/(www\.)?[^\s/$.?#].[^\s]*$/i
+
+function birthDayCheck(value){
+    console.log(value[0])
+    const validDates = (1000*value[0]+100*value[1]+10*value[2]+1*value[3]) < 2023 &&
+                        (1000*value[0]+100*value[1]+10*value[2]+1*value[3]) >1870 &&
+                        10*value[5]+1*value[6]<13 &&
+                        10*value[5]+1*value[6] !=0 &&
+                        10*value[8]+1*value[9] < 32 &&
+                        10*value[8]+1*value[9] !=0
+    return regexBirthDayCheck.test(value) && validDates
+}
 
 function imgTest(img){
 
@@ -18,22 +29,34 @@ function imgTest(img){
             }catch(error){
                 return 'Ingrese un URL correcto'
             }}
-        getimg()
+        
+        return getimg().then(data=>{
+            return data
+        })
     }else{
         return 'Ingrese un URL correcto'
     }
 }
 
 
-export async function submit (driver){
-    if(Object.keys(validate(driver,False)).filter(x=>x!='').length){
+export function submit (errors,driver){
+    if(!!Object.keys(errors).filter(x=>errors[x]!='').length){
         //Hay algun error
+        console.log(errors)
         return "There is something misspelled"
-    }else{
-        const endpoint = 'http://localhost:3001/drivers'
-        const res = await axios.post(endpoint,driver)
-        return res.status==200?"A new driver was created":"There is something misspelled"
     }
+    async function subdriver(driver){
+        try{
+            console.log(driver)
+            const endpoint = 'http://localhost:3001/drivers'
+            const res = await axios.post(endpoint,driver)
+            return "A new driver was created"
+        }catch(error){
+            alert(error.message)
+            return "There is something misspelled"
+        }
+}
+    return subdriver(driver)
 }
 
 
@@ -43,32 +66,28 @@ export function newvalidate(errors,event){
     
     if(value!=''){
         switch(prop){
-            case 'id':
-                regexId.test(value)?
-                    errors.id='':
-                    errors.id='Only numbers';
-                break
             case 'lastname':case 'name':case 'description':case 'nationality':
                 regexLetters.test(value)
                         ?errors[prop]='':
                         errors[prop]='Only letters';
                 break
             case 'dayofbirth':
-                regexBirthDayCheck.test(value)?
+                birthDayCheck(value)?
                     errors.dayofbirth='':
                     errors.dayofbirth='The date should be in the correct format (YYYY-MM-DD).'
                 break
             
-            case 'Teams':
+            case 'teams':
                 const Teams= value.split(/, |,/)
                 Teams.map(team=>{
                     regexLetters.test(team)?
-                            errors.Teams='':
-                            errors.Teams='Write a valid Team name'
+                            errors.teams='':
+                            errors.teams='Write a valid Team name'
                                 })
                 break
             case 'image':
-                errors.image = imgTest(value)
+                // errors.image = imgTest(value)
+                errors.image = ''
                 break
 
         }}
