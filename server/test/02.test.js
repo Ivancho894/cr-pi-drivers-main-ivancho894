@@ -1,13 +1,13 @@
-const { db, Character, Ability, Role } = require("../db");
+const { conn, Driver, Team } = require("../src/db.js");
 
 describe("Modelos DB", () => {
   beforeAll(async () => {
-    await db.sync({ force: true });
+    await conn.sync({ force: true });
   });
 
   describe("Driver", () => {
     test("Debe existir", () => {
-      const Driver = db.models.Driver;
+      const Driver = conn.models.Driver;
       expect(Driver).toBeDefined();
     });
 
@@ -21,7 +21,7 @@ describe("Modelos DB", () => {
         teams: "Ferrari, Automobili Turismo e Sport, Scuderia Centro Sud, Brabham, Reg Parnell, Lotus",
         description: "Giancarlo Baghetti (25 December 1934 27 November 1995) wlis 500, just 17 days after Farina."
       });
-      const keys = ['name','lastname','image','dayofbirth','nationality','teams','description'];
+      const keys = ['id','name','lastname','image','dayofbirth','nationality','description'];
       expect(Object.keys(driver.toJSON())).toEqual(keys);
     });
 
@@ -42,7 +42,7 @@ describe("Modelos DB", () => {
 
 
   afterAll(async () => {
-    await db.sync({ force: true });
-    db.close();
+    await conn.sync({ force: true });
+    conn.close();
   });
 });

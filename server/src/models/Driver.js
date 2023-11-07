@@ -34,5 +34,9 @@ module.exports = (sequelize) => {
       allowNull: false,
     }
 
-  });
+  },{
+    timestamps:true,
+    createdAt: false,
+    updatedAt: 'actualizado'
+ });
 };
