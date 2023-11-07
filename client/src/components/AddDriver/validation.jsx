@@ -48,10 +48,9 @@ export function submit (errors,driver){
     }
     async function subdriver(driver){
         try{
-            console.log(driver)
             const endpoint = 'http://localhost:3001/drivers'
             const {data} = await axios.post(endpoint,driver)
-            console.log(data)
+            alert('Your driver has been added to the database')
             return data.id
         }catch(error){
             alert(error.message)

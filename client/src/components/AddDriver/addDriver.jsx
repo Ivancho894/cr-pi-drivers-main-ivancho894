@@ -10,7 +10,6 @@ import axios from "axios"
 export default function AddDriver(){
     const navigate = useNavigate()
     const [driver,setDriver] = useState({
-        id:0,
         name : '',
         lastname : '',
         description : '',
@@ -32,14 +31,9 @@ export default function AddDriver(){
             
             })
     }
-    const showNewDriver = ()=>{
-        navigate('/drivers/'+driver.id)
-    }
     const handleSubmit = async () =>{
-        await submit(errors,driver).then(id=>id?setDriver({...driver,id:id}):null)
-        // console.log(id)
-        showNewDriver()
-        // id?navigate('http://localhost:3001/drivers'+id):null;
+        await submit(errors,driver).then((id=>id?navigate('/homepage'):null))
+        
     }
 
     return (

@@ -7,11 +7,15 @@ export function GET_DRIVERS(){
     return async (dispatch)=>{
         try{
             const {data} = await axios(endpoint)
+            
         
             const fromApi = getDriversFromApi()
             
             const drivers = {
-                dbDrivers:data,
+                dbDrivers:data.map(driver=>{
+                    driver.id+=1000
+                    return driver
+                }),
                 apiDrivers: fromApi
             }
 
