@@ -15,7 +15,7 @@ describe("Modelos DB", () => {
       const driver = await Driver.build({
         name: "Giancarlo",
         lastname: "Baghetti" ,
-        image: "d",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRba_Lmunu1LrZzWya0lPRRszg3COaxKNrFqw&usqp=CAU",
         dayofbirth: "1934-12-25",
         nationality: "Italian",
         teams: "Ferrari, Automobili Turismo e Sport, Scuderia Centro Sud, Brabham, Reg Parnell, Lotus",
@@ -27,11 +27,11 @@ describe("Modelos DB", () => {
 
     test("No debe contener los timestamps automáticos: createdAt y updatedAt", async () => {
       const driver = await Driver.build({
-        name: "Giancarlo",
-        lastname: "Baghetti" ,
-        image: "d",
-        dayofbirth: "1934-12-25",
-        nationality: "Italian",
+        name: "Gian",
+        lastname: "Bageoiatti" ,
+        image: "https://encryphttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkuhYKp0_LpCpbKIMOPOkSymCJKdtzRr1DSA&usqp=CAUted-tbn0.gstatic.com/images?q=tbn:ANd9GcRba_Lmunu1LrZzWya0lPRRszg3COaxKNrFqw&usqp=CAU",
+        dayofbirth: "1939-12-25",
+        nationality: "American",
         teams: "Ferrari, Automobili Turismo e Sport, Scuderia Centro Sud, Brabham, Reg Parnell, Lotus",
         description: "Giancarlo Baghetti (25 December 1934 27 November 1995) wlis 500, just 17 days after Farina."
       });

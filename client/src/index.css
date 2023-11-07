@@ -6,9 +6,6 @@
   color-scheme: light dark;
   color: rgb(0, 0, 0);
   background-color: #242424;
-  background-image: url("../Images/defBack.webp"); /* Establece la imagen de fondo solo para esta página */
-  background-size: cover;
-  background-attachment: fixed; /* Mantiene la imagen de fondo fija solo en esta página */
   width: 100%;
   height: 100%;
   text-shadow: 1px 1px 2px rgb(179, 179, 179);

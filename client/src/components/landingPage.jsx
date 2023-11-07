@@ -13,7 +13,11 @@ export default function LandingPage(){
     return (
         <div className='content'>
             <div className="fixed-background-LandingPage">
-                <h1 id='title'>welcome to the F1 fan page</h1>
+            <div className="overlaye"></div>
+
+                <div className="title">
+                    <img src="../Images/F1logo.svg.png" alt="" id='title'/>
+                </div>
                 <div className="driversCont">
                     <Link to='/homepage' >
                         <img

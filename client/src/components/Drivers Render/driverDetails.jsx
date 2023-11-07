@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import HomeBar from '../Home/homeBar';
 import { useParams } from "react-router-dom"
+// import HomeBar from "../Home/homeBar"
 
 import axios from 'axios';
 import DriverDetRender from './driverDetailsRen';
@@ -21,6 +22,8 @@ export default function DriverDetails(){
     },[])
     return(
         <div >
+            <div className="overlaye"></div>
+
             <DriverDetRender driver={driver}/>
         </div>
     )

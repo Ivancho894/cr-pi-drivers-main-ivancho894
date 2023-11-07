@@ -68,7 +68,7 @@ body{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.509);
 }
 
 .cards {
@@ -135,10 +135,16 @@ body{
   gap: 20px;
 }
 
-
+.title{  
+  position: fixed;
+  top: 100px;
+  width: 100%;}
 #title{
   position: absolute;
-  height: 20px;
+  height: 100px;
+  display: table;
+  position: relative;
+  margin: auto;
 }
 .driversCont{
   position: fixed;
@@ -148,7 +154,7 @@ body{
 
 #driversImg{
   background-color: transparent;
-  max-width: 600px;
+  max-width: 800px;
   display: table;
   position: relative;
   margin: auto;
@@ -182,10 +188,7 @@ h3{
 }
 
 .homeBar{
-  background-image: url('../Images/GettyImages-1233061641.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  background-color: #ff00006d;
   width: 100%;
   height: 40px;
   position: relative;
