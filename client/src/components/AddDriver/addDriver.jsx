@@ -31,8 +31,10 @@ export default function AddDriver(){
             
             })
     }
-    const handleSubmit = async () =>{
-        await submit(errors,driver).then((id=>id?navigate('/homepage'):null))
+    const handleSubmit = () =>{
+        submit(errors,driver).then((id=>{
+            id?navigate('/homepage'):null;
+        }))
         
     }
 

@@ -1,86 +1,48 @@
-const server = require('../src/server')
-const session = require('supertest')
-const agent = session(server)
+const { db, Character, Ability, Role } = require("../db");
 
-describe('ROUTES TEST',()=>{
-    describe(' POST | /drivers',()=>{
-        const newDriver = {
-            "id": 393,
-            "name": "Giancarlo",
-            "lastname": "Baghetti" ,
-            "image": "d",
-            "dayofbirth": "1934-12-25",
-            "nationality": "Italian",
-            "teams": "Ferrari, Automobili Turismo e Sport, Scuderia Centro Sud, Brabham, Reg Parnell, Lotus",
-            "description": "Giancarlo Baghetti (25 December 1934 27 November 1995) wlis 500, just 17 days after Farina."
-          }
-        it("Response with status 200",async ()=>{
-            const res = await agent.post('/drivers').send(newDriver)
-            expect(res.statusCode).toBe(200)
-        })
-        it('Response with a new driver',async ()=>{
-            const res = await agent.get('/drivers')            
-            const props = ['id','name','lastname','description','image','nationality','dayofbirth'];
-            props.map(x=>{
-                expect(res.body[0]).toHaveProperty(x)
-            })
-        })
+describe("Modelos DB", () => {
+  beforeAll(async () => {
+    await db.sync({ force: true });
+  });
+
+  describe("Driver", () => {
+    test("Debe existir", () => {
+      const Driver = db.models.Driver;
+      expect(Driver).toBeDefined();
+    });
+
+    test("Debe tener las propiedades correctas", async () => {
+      const driver = await Driver.build({
+        name: "Giancarlo",
+        lastname: "Baghetti" ,
+        image: "d",
+        dayofbirth: "1934-12-25",
+        nationality: "Italian",
+        teams: "Ferrari, Automobili Turismo e Sport, Scuderia Centro Sud, Brabham, Reg Parnell, Lotus",
+        description: "Giancarlo Baghetti (25 December 1934 27 November 1995) wlis 500, just 17 days after Farina."
+      });
+      const keys = ['name','lastname','image','dayofbirth','nationality','teams','description'];
+      expect(Object.keys(driver.toJSON())).toEqual(keys);
+    });
+
+    test("No debe contener los timestamps automáticos: createdAt y updatedAt", async () => {
+      const driver = await Driver.build({
+        name: "Giancarlo",
+        lastname: "Baghetti" ,
+        image: "d",
+        dayofbirth: "1934-12-25",
+        nationality: "Italian",
+        teams: "Ferrari, Automobili Turismo e Sport, Scuderia Centro Sud, Brabham, Reg Parnell, Lotus",
+        description: "Giancarlo Baghetti (25 December 1934 27 November 1995) wlis 500, just 17 days after Farina."
+      });
+      const timestamps = ['createdAt', 'updatedAt'];
+      expect(Object.keys(driver.toJSON())).not.toEqual(expect.arrayContaining(timestamps));
     })
-    describe(' GET | /drivers',()=>{
-        it("Response with status 200",async ()=>{
-            const res = await agent.get('/drivers')
-            expect(res.statusCode).toBe(200)
-        })
+  });
 
-        it('Response with drivers',async ()=>{
-            const res = await agent.get('/drivers')            
-            const props = ['id','name','lastname','description','image','nationality','dayofbirth'];
-            props.map(x=>{
-                expect(res.body[0]).toHaveProperty(x)
-            })
-        })
-        })
-        describe(' GET | /drivers/:id',()=>{
-            it("Response with status 200",async ()=>{
-                const res = await agent.get('/drivers/393')
-                expect(res.statusCode).toBe(200)
-            })
-    
-            it('Response with drivers',async ()=>{
-                const res = await agent.get('/drivers/393')            
-                const props = ['id','name','lastname','description','image','nationality','dayofbirth'];
-                props.map(x=>{
-                    expect(res.body).toHaveProperty(x)
-                })
-            })
-            })
-        describe(' GET | /drivers/name?=...',()=>{
-            it("Response with status 200",async ()=>{
-                const res = await agent.get('/drivers/?name =Giancarlo')
-                expect(res.statusCode).toBe(200)
-            })
-    
-            it('Response with drivers',async ()=>{
-                const res = await agent.get('/drivers/?name=Giancarlo')            
-                const props = ['id','name','lastname','description','image','nationality','dayofbirth'];
-                props.map(x=>{
-                    expect(res.body[0]).toHaveProperty(x)
-                })
-            })
-            })
-        describe(' GET | /teams',()=>{
-            it("Response with status 200",async ()=>{
-                const res = await agent.get('/teams')
-                expect(res.statusCode).toBe(200)
-            })
-    
-            it('Response with drivers',async ()=>{
-                const res = await agent.get('/teams')            
-                const props = ['id','name','createdAt','updatedAt'];
-                props.map(x=>{
-                    expect(res.body[0]).toHaveProperty(x)
-                })
-            })
-            })
 
-})
+  afterAll(async () => {
+    await db.sync({ force: true });
+    db.close();
+  });
+});
