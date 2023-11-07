@@ -1,4 +1,5 @@
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const regexLetters = /^[A-Za-z ]+$/
 
@@ -49,14 +50,16 @@ export function submit (errors,driver){
         try{
             console.log(driver)
             const endpoint = 'http://localhost:3001/drivers'
-            const res = await axios.post(endpoint,driver)
-            return "A new driver was created"
+            const {data} = await axios.post(endpoint,driver)
+            console.log(data)
+            return data.id
         }catch(error){
             alert(error.message)
-            return "There is something misspelled"
+            return 0
         }
-}
-    return subdriver(driver)
+    }
+    return subdriver(driver).then(id=>{return id})
+    
 }
 
 

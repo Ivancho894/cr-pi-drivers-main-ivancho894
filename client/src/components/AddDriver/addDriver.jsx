@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom"
 import FormRender from "./formRender"
 import DriverDetRender from "../Drivers Render/driverDetailsRen"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 
 export default function AddDriver(){
     const navigate = useNavigate()
     const [driver,setDriver] = useState({
+        id:0,
         name : '',
         lastname : '',
         description : '',
@@ -30,12 +32,14 @@ export default function AddDriver(){
             
             })
     }
-    const handleSubmit = () =>{
-        const res = submit(errors,driver)
-        res.then(data=>{
-            //Falta saber el id que le designo la DB
-            // if(data==="A new driver was created") navigate('http://localhost:3001/drivers/'+driver.id)
-        })
+    const showNewDriver = ()=>{
+        navigate('/drivers/'+driver.id)
+    }
+    const handleSubmit = async () =>{
+        await submit(errors,driver).then(id=>id?setDriver({...driver,id:id}):null)
+        // console.log(id)
+        showNewDriver()
+        // id?navigate('http://localhost:3001/drivers'+id):null;
     }
 
     return (
