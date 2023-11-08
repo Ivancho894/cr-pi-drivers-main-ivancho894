@@ -40,7 +40,7 @@ export function submit (errors,driver){
                 alert('Your driver has been added to the database')
                 return data.id
             }catch(error){
-                alert(error.message)
+                alert('Faltan datos')
                 return 0
             }
         }

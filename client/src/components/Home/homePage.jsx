@@ -2,6 +2,7 @@ import Drivers from "../Drivers Render/drivers";
 import { useState,useEffect } from 'react';
 import Filter from "../filter and sort/filter";
 import Sort from "../filter and sort/sort";
+import SandF from "../filter and sort/sortNfilter";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import HomeBar from "./homeBar";
@@ -31,8 +32,7 @@ export default function HomePage(){
         <div className="homepage">
             <HomeBar/>
             <div className="sandf"> 
-                <Filter />
-                <Sort/>
+                <SandF/>
                 <button onClick={()=>{navigate('/newdriver')}}>New driver</button>
             </div>
             <Drivers drivers={allDrivers} curPage={curPage}/>

@@ -7,14 +7,11 @@ const initialState = {
 export default function reducer(state=initialState,action){
     switch(action.type){
         case 'GET_DRIVERS':
-            return {
-                allDrivers:[...action.payload.dbDrivers,...action.payload.apiDrivers],
-                dbDrivers:action.payload.dbDrivers,
-                apiDrivers:action.payload.apiDrivers}
+            return {allDrivers:[...action.payload.dbDrivers,...action.payload.apiDrivers],dbDrivers:action.payload.dbDrivers,apiDrivers:action.payload.apiDrivers}
         case 'TEAM_FILTER':
             let newDrivers = []
             if(action.payload!='-'){
-                [...state.allDrivers].map(x=>{
+                [...state.apiDrivers,...state.dbDrivers].map(x=>{
                     x.Teams?.find(t=>t.name==action.payload)?newDrivers.push(x):null;
                 })
             }else{
@@ -37,17 +34,18 @@ export default function reducer(state=initialState,action){
                 allDrivers:[...state.apiDrivers]
             }
         case 'ORDER':
-            let ordered = [] 
-            if(action.payload.order =='A'){
+            let ordered = [...state.allDrivers]
+            if(action.payload.order !=''){
+                if(action.payload.order =='A'){
                 ordered = action.payload.type=='name'?
-                [...state.allDrivers].sort((a,b)=>a.name==b.name?0:a.name<b.name?-1:1):
-                [...state.allDrivers].sort((a,b)=>Date.parse(a.dayofbirth)-Date.parse(b.dayofbirth))
+                ordered.sort((a,b)=>a.name==b.name?0:a.name<b.name?-1:1):
+                ordered.sort((a,b)=>Date.parse(a.dayofbirth)-Date.parse(b.dayofbirth))
             
             }else{
                 ordered = action.payload.type=='name'?
-                [...state.allDrivers].sort((b,a)=>a.name==b.name?0:a.name<b.name?-1:1):
-                [...state.allDrivers].sort((a,b)=>Date.parse(b.dayofbirth)-Date.parse(a.dayofbirth))
-            }
+                ordered.sort((b,a)=>a.name==b.name?0:a.name<b.name?-1:1):
+                ordered.sort((a,b)=>Date.parse(b.dayofbirth)-Date.parse(a.dayofbirth))
+            }}
             return {
                 ...state,
                 allDrivers:ordered
