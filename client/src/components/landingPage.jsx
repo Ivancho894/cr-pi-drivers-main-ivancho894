@@ -1,15 +1,23 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { GET_DRIVERS } from "../redux/actions";
+
 
 export default function LandingPage(){
     const [imgHover,setimgHover] = useState(false)
+    const dispatch = useDispatch()
+
     const handleMouseOver = () => {
         setimgHover(true);
     };
     const handleMouseOut = () => {
         setimgHover(false);
     };
+    
+    useEffect(()=>{
+        dispatch(GET_DRIVERS())
+    },[])
     return (
         <div className='content'>
             <div className="fixed-background-LandingPage">

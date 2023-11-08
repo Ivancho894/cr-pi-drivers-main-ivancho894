@@ -1,9 +1,12 @@
-import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { SEARCH_DRIVERS } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { GET_DRIVERS } from "../../redux/actions";
+
+
 export default function SearchBar(){
+    const navigate = useNavigate()
     const [theValue,setValue] = useState('')
     const dispatch = useDispatch();
     const handleChange = (event) =>{
@@ -11,8 +14,11 @@ export default function SearchBar(){
     }
     const handleSearch = () =>{
         theValue!=''?dispatch(SEARCH_DRIVERS(theValue)):alert('Ingrese un nombre')
+        navigate('/homepage')
     }
-
+    useEffect(()=>{
+        theValue!=''?dispatch(GET_DRIVERS()):null;
+    },[theValue])
     //Search button hover state
     const [imgHover,setimgHover] = useState(false)
     const handleMouseOver = () => {

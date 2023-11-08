@@ -20,7 +20,7 @@ async function getDriverById (req,res){
                 name : inApi[0].name.forename,
                 lastname : inApi[0].name.surname,
                 description : inApi[0].description,
-                image: inApi[0].image?inApi[0].image.url:'',
+                image: inApi[0].image.url!=''?inApi[0].image.url:'https://fivethirtyeight.com/wp-content/uploads/2021/04/GettyImages-1309620771-4x3-1.jpg?w=575',
                 nationality: inApi[0].nationality,
                 dayofbirth: inApi[0].dob,
                 Teams:inApi[0].teams?.split(/, |,/).map(team=>{return {name:team}})

@@ -3,8 +3,6 @@ import { useState,useEffect } from 'react';
 import Filter from "../filter and sort/filter";
 import Sort from "../filter and sort/sort";
 import { useDispatch, useSelector } from "react-redux";
-import { GET_DRIVERS, TEAM_FILTER } from "../../redux/actions";
-import SearchBar from '../SearchBar/searchBar'
 import { useNavigate } from "react-router-dom";
 import HomeBar from "./homeBar";
 import Pagination from "./Pagination";
@@ -15,9 +13,7 @@ export default function HomePage(){
     const allDrivers = useSelector(state=>state.allDrivers);
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    useEffect(()=>{
-        dispatch(GET_DRIVERS())
-    },[])
+
 
     //Pagination
     const [curPage,setCurPage] = useState(1);

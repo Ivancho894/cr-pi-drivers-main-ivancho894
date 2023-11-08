@@ -33,7 +33,7 @@ export default function AddDriver(){
     }
     const handleSubmit = () =>{
         submit(errors,driver).then((id=>{
-            id?navigate('/homepage'):null;
+            id?navigate('/'):null;
         }))
         
     }

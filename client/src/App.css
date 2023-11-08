@@ -90,6 +90,7 @@ body{
   flex-direction: column; 
   justify-content: space-between; 
   text-align: center;
+  justify-content: center;
   height: 100%;
   background: rgba(101, 101, 101, 0.48); 
 
@@ -102,7 +103,7 @@ body{
 .cardimg {
   width: 100%;
   display: block;
-  max-height: 200px;
+  max-height: 300px;
   object-fit: cover;
 }
 
@@ -164,7 +165,6 @@ body{
   display: table;
   position: relative;
   margin: auto;
-  background-color: rgba(136, 136, 136, 0.458);
 }
 
 .searchbutton{
