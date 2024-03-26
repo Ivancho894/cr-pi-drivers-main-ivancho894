@@ -32,3 +32,6 @@ To start working on the project, follow these steps:
 
 ## Contributions
 Contributions are welcome! If you find any bugs or have suggestions for improvements, feel free to open an issue or submit a pull request.
+
+
+demo video: https://youtu.be/dCL7FZogGEY
