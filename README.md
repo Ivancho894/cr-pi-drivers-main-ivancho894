@@ -1,7 +1,6 @@
-# DRIVERS | Single Page Application
-
+# DRIVERS 
 ## Description
-This project aims to build a Single Page Application (SPA) using technologies such as React, Redux, Node, Express, and Sequelize. The application will allow users to search, view, filter, and sort drivers, as well as create new drivers. It serves as a practical application of concepts learned during the course, while also providing an opportunity to learn best practices, Git workflow, and testing.
+This project use technologies such as React, Redux, Node, Express, and Sequelize. The application will allow users to search, view, filter, and sort drivers, as well as create new drivers. It serves as a practical application of concepts learned during the course, while also providing an opportunity to learn best practices, Git workflow, and testing.
 
 ## Getting Started
 To start working on the project, follow these steps:
